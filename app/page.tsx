@@ -1,16 +1,17 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className='relative flex h-screen w-full flex-row   group/design-root overflow-hidden '>
-      <div className=' w-full flex-col flex justify-center items-center px-8 py-12 md:w-1/2 md:px-12 lg:px-24 '>
+    <div className='relative flex min-h-screen w-full flex-row   group/design-root overflow-hidden '>
+      <div className=' w-full flex-col flex justify-center items-start md:items-center py-4 px-8 md:py-12 md:w-1/2 md:px-12 lg:px-24 '>
         <div className='mx-auto w-full max-w-md text-foreground'>
           <h1 className='tracking-tight text-4xl font-bold lg:text-5xl'>
-            Welcome to Invoicer
+            Welcome to Invoice Scanner
           </h1>
           <p className='mt-4  text-lg leading-relaxed'>
-            Invoice management, simplified. Effortlessly download, read, and
+            Invoice Scanner, simplified. Effortlessly download, read, and
             visualize your invoice data with powerful statistics.
           </p>
           <div className='mt-8 grid grid-cols-1 gap-4'>
@@ -47,15 +48,15 @@ export default function Home() {
             <Button className=' flex min-w-[84px] flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 text-base font-bold tracking-[0.015em]'>
               <span className='truncate'>Register</span>
             </Button>
-            <Button className='bg-secondary text-secondary-foreground flex min-w-[84px] flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5   text-base font-bold tracking-[0.015em]'>
-              <span className='truncate'>Login</span>
+            <Button asChild className='bg-secondary hover:bg-secondary/80 text-secondary-foreground flex min-w-[84px] flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5   text-base font-bold tracking-[0.015em]'>
+              <Link href='/dashboard'>Login</Link>
             </Button>
           </div>
         </div>
       </div>
       <div className='hidden w-1/2 md:block'>
         <div
-          className='relative h-screen w-full bg-cover bg-center bg-amber-400'
+          className='relative min-h-screen w-full bg-cover bg-center'
           data-alt='Abstract overlapping geometric shapes in shades of green and dark grey, representing data visualization.'
         >
           <Image
