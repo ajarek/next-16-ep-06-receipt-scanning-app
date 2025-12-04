@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { SignedIn, UserButton } from "@clerk/nextjs"
 import React from "react"
 
 const Dashboard = () => {
@@ -10,14 +11,9 @@ const Dashboard = () => {
         <h1 className='text-3xl font-bold text-slate-900 dark:text-white flex-1'>
           Dashboard
         </h1>
-        <button className='flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 w-12 bg-transparent text-slate-900 dark:text-white'>
-          <Image
-            src='/icons/account_circle.svg'
-            alt='Account'
-            width={36}
-            height={36}
-          />
-        </button>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
       <div className='flex flex-col gap-6 p-4'>
         {/* Stats Cards */}
@@ -50,12 +46,7 @@ const Dashboard = () => {
         {/* Button Group */}
         <div className='flex w-full gap-3'>
           <button className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-4 text-sm font-bold leading-normal tracking-tight text-background-dark'>
-            <Image
-              src='/icons/add.svg'
-              alt='Add'
-              width={24}
-              height={24}
-            />
+            <Image src='/icons/add.svg' alt='Add' width={24} height={24} />
             <span className='truncate'>New Invoice</span>
           </button>
           <button className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
