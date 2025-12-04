@@ -9,11 +9,10 @@ export default function Home() {
       <div className=' w-full flex-col flex justify-center items-start md:items-center py-4 px-8 md:py-12 md:w-1/2 md:px-12 lg:px-24 '>
         <div className='mx-auto w-full max-w-md text-foreground'>
           <h1 className='tracking-tight text-4xl font-bold lg:text-5xl'>
-            Welcome to Invoice Scanner
+            Witamy w skanerze faktur
           </h1>
           <p className='mt-4  text-lg leading-relaxed'>
-            Invoice Scanner, simplified. Effortlessly download, read, and
-            visualize your invoice data with powerful statistics.
+            Skaner faktur, uproszczony. Bezproblemowo pobieraj, odczytuj i wizualizuj dane z faktur dzięki zaawansowanym statystykom.
           </p>
           <div className='mt-8 grid grid-cols-1 gap-4'>
             <div className='flex items-center gap-4 rounded-lg bg-card p-4'>
@@ -24,9 +23,9 @@ export default function Home() {
                 height={24}
               />
               <div className='flex flex-col'>
-                <h2 className=' text-foreground text-lg font-bold'>Download</h2>
+                <h2 className=' text-foreground text-lg font-bold'>Pobierz</h2>
                 <p className=' text-base text-muted-foreground'>
-                  Effortless invoice downloading
+                  Bezproblemowe pobieranie faktur
                 </p>
               </div>
             </div>
@@ -38,9 +37,9 @@ export default function Home() {
                 height={24}
               />
               <div className='flex flex-col'>
-                <h2 className=' text-foreground text-lg font-bold'>Analyze</h2>
+                <h2 className=' text-foreground text-lg font-bold'>Skanuj</h2>
                 <p className=' text-base text-muted-foreground'>
-                  Automatic data extraction
+                  Automatyczne odczytywanie danych z faktur
                 </p>
               </div>
             </div>
@@ -53,10 +52,10 @@ export default function Home() {
               />
               <div className='flex flex-col'>
                 <h2 className=' text-foreground text-lg font-bold'>
-                  Visualize
+                  Wizualizuj
                 </h2>
                 <p className=' text-base text-muted-foreground'>
-                  Insightful statistics display
+                  Wizualizacja statystyk
                 </p>
               </div>
             </div>
