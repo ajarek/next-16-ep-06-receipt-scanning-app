@@ -1,6 +1,8 @@
 import Image from "next/image"
 
 import invoices from "@/data/invoices.json"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const Dashboard = () => {
   return (
@@ -46,10 +48,12 @@ const Dashboard = () => {
         </div>
         {/* Button Group */}
         <div className='flex w-full gap-3'>
-          <button className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-4 text-sm font-bold leading-normal tracking-tight text-background-dark'>
+          <Button asChild className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-4 text-sm font-bold leading-normal tracking-tight text-background-dark'>
+            <Link href='/add-invoice'>
             <Image src='/icons/add.svg' alt='Add' width={24} height={24} />
             <span className='truncate'>Dodaj nową fakturę</span>
-          </button>
+            </Link>
+          </Button>
           <button className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
             <Image
               src='/icons/download.svg'
