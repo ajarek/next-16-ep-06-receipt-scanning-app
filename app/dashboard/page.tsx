@@ -1,10 +1,12 @@
 import Image from "next/image"
 
-import invoices from "@/data/invoices.json"
+
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { getInvoices } from "@/lib/actions/getInvoices"
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  const invoices =await getInvoices()
   return (
     <div className='relative flex h-auto min-h-screen w-full flex-col'>
       {/* Top App Bar */}
@@ -123,7 +125,7 @@ const Dashboard = () => {
                   </div>
                   <div className='flex-1'>
                     <p className='font-bold text-slate-900 dark:text-white'>
-                      {invoice.id}
+                      {invoice.number}
                     </p>
                     <p className='text-sm text-slate-600 dark:text-slate-400'>
                       {invoice.seller}

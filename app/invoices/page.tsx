@@ -1,8 +1,8 @@
-import React from "react"
+import { getInvoices } from "@/lib/actions/getInvoices"
 import Image from "next/image"
-import invoices from "@/data/invoices.json"
 
-const InvoicesPage = () => {
+const InvoicesPage = async () => {
+  const invoices = await getInvoices()
   return (
     <div className='relative flex h-auto min-h-screen w-full flex-col'>
       <div className='sticky top-0 z-10 flex items-center bg-background-light/80 p-4 pb-3 dark:bg-background-dark/80 backdrop-blur-sm'>
@@ -26,7 +26,7 @@ const InvoicesPage = () => {
           />
         </div>
         <div className='flex w-full gap-3 overflow-x-auto pb-2 -mx-4 px-4'>
-          <button className='flex h-10 flex-shrink-0 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
+          <button className='flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
             <Image
               src='/icons/filter_list.svg'
               alt='filter'
@@ -36,7 +36,7 @@ const InvoicesPage = () => {
             />
             <span>Wszystkie statusy</span>
           </button>
-          <button className='flex h-10 flex-shrink-0 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-200/50 dark:bg-white/10 px-4 text-sm font-medium leading-normal tracking-tight text-slate-600 dark:text-slate-300'>
+          <button className='flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-200/50 dark:bg-white/10 px-4 text-sm font-medium leading-normal tracking-tight text-slate-600 dark:text-slate-300'>
             <Image
               src='/icons/calendar_today.svg'
               alt='calendar'
@@ -46,7 +46,7 @@ const InvoicesPage = () => {
             />
             <span>Okres</span>
           </button>
-          <button className='flex h-10 flex-shrink-0 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-200/50 dark:bg-white/10 px-4 text-sm font-medium leading-normal tracking-tight text-slate-600 dark:text-slate-300'>
+          <button className='flex h-10  cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-200/50 dark:bg-white/10 px-4 text-sm font-medium leading-normal tracking-tight text-slate-600 dark:text-slate-300'>
             <Image
               src='/icons/swap_vert.svg'
               alt='sort'
@@ -66,7 +66,7 @@ const InvoicesPage = () => {
               <div className='flex items-start justify-between'>
                 <div>
                   <p className='font-bold text-slate-900 dark:text-white'>
-                    {invoice.id}
+                    {invoice.number}
                   </p>
                   <p className='text-sm text-slate-600 dark:text-slate-400'>
                     {invoice.seller}
@@ -78,7 +78,7 @@ const InvoicesPage = () => {
                   </p>
                   <div className='flex items-center justify-end gap-1.5 mt-1'>
                     <span className='h-2 w-2 rounded-full bg-green-500'></span>
-                    <p className='text-sm font-medium text-green-500'>
+                    <p className={`text-sm font-medium ${invoice.status === 'zapłacona' ? 'text-green-500' : 'text-red-500'}`}>
                       {invoice.status}
                     </p>
                   </div>
@@ -87,11 +87,11 @@ const InvoicesPage = () => {
               <div className='border-t border-slate-300/50 dark:border-white/10 pt-3 flex justify-between text-sm text-slate-600 dark:text-slate-400'>
                 <div>
                   <p className='font-medium'>Data:</p>
-                  <p>{invoice.date}</p>
+                  <p>{invoice.date.toLocaleString().split("T")[0]}</p>
                 </div>
                 <div className='text-right'>
                   <p className='font-medium'>Data płatności:</p>
-                  <p>{invoice.paymentDate}</p>
+                  <p>{invoice.paymentDate.toLocaleString().split("T")[0]}</p>
                 </div>
               </div>
               <div className='flex gap-2'>

@@ -32,6 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { createInvoice } from "@/lib/actions/createInvoice"
 
 const paymentMethods = [
   { label: "Gotówka", value: "gotówka" },
@@ -92,11 +93,20 @@ const AddInvoiceForm = () => {
     },
   })
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    const payload = {
+      ...data,
+      date: data.date.toISOString(),
+      paymentDate: data.paymentDate.toISOString(),
+      amount: parseFloat(data.amount),
+      ptu: parseFloat(data.ptu),
+    }
+
+    await createInvoice(payload)
     toast("Dane zostały wysłane:", {
-      description: "Dane zostały wysłane." + data,
+      description: "Dane zostały wysłane.",
     })
-    console.log(data)
+    console.log(payload)
     form.reset()
   }
 
@@ -401,8 +411,11 @@ const AddInvoiceForm = () => {
           </FieldGroup>
         </form>
       </CardContent>
-      <CardFooter >
-        <Field orientation='horizontal' className='w-full flex justify-between   '>
+      <CardFooter>
+        <Field
+          orientation='horizontal'
+          className='w-full flex justify-between   '
+        >
           <Button type='button' variant='outline' onClick={() => form.reset()}>
             Reset
           </Button>
