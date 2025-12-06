@@ -101,7 +101,7 @@ const AddInvoiceForm = () => {
   }
 
   return (
-    <Card className='w-full sm:max-w-md mx-auto mt-8 mb-24'>
+    <Card className='w-full sm:max-w-sm mx-auto mt-8 mb-24 '>
       <CardHeader>
         <CardTitle>Dodaj fakturę</CardTitle>
         <CardDescription>Dodaj nową fakturę.</CardDescription>
@@ -401,8 +401,8 @@ const AddInvoiceForm = () => {
           </FieldGroup>
         </form>
       </CardContent>
-      <CardFooter className='flex justify-between max-w-[360px]'>
-        <Field orientation='horizontal'>
+      <CardFooter >
+        <Field orientation='horizontal' className='w-full flex justify-between   '>
           <Button type='button' variant='outline' onClick={() => form.reset()}>
             Reset
           </Button>
@@ -410,7 +410,7 @@ const AddInvoiceForm = () => {
             type='submit'
             form='form-rhf-demo'
             disabled={form.formState.isSubmitting}
-            className='w-full'
+            className='w-1/2'
           >
             Dodaj
           </Button>
