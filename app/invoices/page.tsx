@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button"
 import { getInvoices } from "@/lib/actions/getInvoices"
 import Image from "next/image"
+import Link from "next/link"
 
 const InvoicesPage = async () => {
   const invoices = await getInvoices()
@@ -95,7 +97,8 @@ const InvoicesPage = async () => {
                 </div>
               </div>
               <div className='flex gap-2'>
-                <button className='flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-300/50 dark:bg-white/10 px-4 text-xs font-bold leading-normal tracking-tight text-slate-700 dark:text-slate-200'>
+                
+                <Link href={`/invoices/${invoice.id}`} className='flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-300/50 dark:bg-white/10 px-4 text-xs font-bold leading-normal tracking-tight text-slate-700 dark:text-slate-200 hover:bg-slate-400/50 dark:hover:bg-white/20'>
                   <Image
                     src='/icons/visibility.svg'
                     alt='visibility'
@@ -104,7 +107,8 @@ const InvoicesPage = async () => {
                     className='text-slate-500'
                   />
                   <span>Wyświetl</span>
-                </button>
+                  </Link>
+                
                 <button className='flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-300/50 dark:bg-white/10 px-4 text-xs font-bold leading-normal tracking-tight text-slate-700 dark:text-slate-200'>
                   <Image
                     src='/icons/download_FFF.svg'

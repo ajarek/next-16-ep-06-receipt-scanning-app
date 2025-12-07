@@ -111,7 +111,8 @@ const Dashboard = async () => {
               )
               .slice(0, 3)
               .map((invoice) => (
-                <div
+                <Link 
+                  href={`/invoices/${invoice.id}`}
                   key={invoice.id}
                   className='flex items-center gap-4 rounded-lg bg-slate-200/50 p-3 dark:bg-white/10'
                 >
@@ -154,7 +155,7 @@ const Dashboard = async () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
           </div>
           <div className='h-24'></div> {/* Spacer for bottom nav */}
