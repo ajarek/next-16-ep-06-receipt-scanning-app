@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import ButtonDeleteInvoice from "@/components/ButtonDeleteInvoice"
 import { getInvoices } from "@/lib/actions/getInvoices"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,7 +9,7 @@ const InvoicesPage = async () => {
     <div className='relative flex h-auto min-h-screen w-full flex-col'>
       <div className='sticky top-0 z-10 flex items-center bg-background-light/80 p-4 pb-3 dark:bg-background-dark/80 backdrop-blur-sm'>
         <h1 className='text-3xl font-bold text-slate-900 dark:text-white flex-1'>
-          Faktury
+          Faktury ({invoices.length})
         </h1>
       </div>
       <div className='flex flex-col gap-4 p-4'>
@@ -79,7 +79,7 @@ const InvoicesPage = async () => {
                     {invoice.amount.toFixed(2)} PLN
                   </p>
                   <div className='flex items-center justify-end gap-1.5 mt-1'>
-                    <span className='h-2 w-2 rounded-full bg-green-500'></span>
+                    <span className={'h-2 w-2 rounded-full ' + (invoice.status === 'zapłacona' ? 'bg-green-500' : 'bg-red-500')}></span>
                     <p className={`text-sm font-medium ${invoice.status === 'zapłacona' ? 'text-green-500' : 'text-red-500'}`}>
                       {invoice.status}
                     </p>
@@ -109,16 +109,7 @@ const InvoicesPage = async () => {
                   <span>Wyświetl</span>
                   </Link>
                 
-                <button className='flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-300/50 dark:bg-white/10 px-4 text-xs font-bold leading-normal tracking-tight text-slate-700 dark:text-slate-200'>
-                  <Image
-                    src='/icons/download_FFF.svg'
-                    alt='download'
-                    width={24}
-                    height={24}
-                    className='text-slate-500'
-                  />
-                  <span>Pobierz</span>
-                </button>
+                <ButtonDeleteInvoice id={invoice.id} />
               </div>
             </div>
           ))}

@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import Link from "next/link"
-import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs"
 
-export default function Home() {
+import { auth } from "@clerk/nextjs/server"
+import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs"
+import { redirect } from "next/navigation"
+
+export default async function Home() {
+  const { userId } = await auth()
+  if (userId) {
+    return redirect("/dashboard")
+  }
   return (
     <div className='relative flex min-h-screen w-full flex-row   group/design-root overflow-hidden '>
       <div className=' w-full flex-col flex justify-center items-start md:items-center py-4 px-8 md:py-12 md:w-1/2 md:px-12 lg:px-24 '>
@@ -12,7 +18,8 @@ export default function Home() {
             Witamy w skanerze faktur
           </h1>
           <p className='mt-4  text-lg leading-relaxed'>
-            Skaner faktur, uproszczony. Bezproblemowo pobieraj, odczytuj i wizualizuj dane z faktur dzięki zaawansowanym statystykom.
+            Skaner faktur, uproszczony. Bezproblemowo pobieraj, odczytuj i
+            wizualizuj dane z faktur dzięki zaawansowanym statystykom.
           </p>
           <div className='mt-8 grid grid-cols-1 gap-4'>
             <div className='flex items-center gap-4 rounded-lg bg-card p-4'>
