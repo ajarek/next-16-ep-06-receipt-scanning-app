@@ -1,22 +1,30 @@
 import ButtonDeleteInvoice from "@/components/ButtonDeleteInvoice"
 import SelectName from "@/components/SelectName"
+import SortInvoicesByDate from "@/components/SortInvoicesByDate"
 import SortInvoices from "@/components/SortInvoices"
 import { getInvoices } from "@/lib/actions/getInvoices"
 import Image from "next/image"
 import Link from "next/link"
+import SortAll from "@/components/SortAll"
 
 const InvoicesPage = async ({
   searchParams,
 }: {
-  searchParams: Promise<{ sort?: string; name?: string }>
+  searchParams: Promise<{ sort?: string; name?: string; date?: string }>
 }) => {
-  const { sort, name } = await searchParams
+  const { sort, name, date } = await searchParams
   let invoices = await getInvoices()
 
   if (name) {
     invoices = invoices.filter((invoice) =>
       invoice.seller.toLowerCase().includes(name.toLowerCase())
     )
+  }
+
+  if (date) {
+    invoices = invoices.filter((invoice) => {
+      return new Date(invoice.date).toISOString().split("T")[0] === date
+    })
   }
 
   if (sort === "asc") {
@@ -38,26 +46,8 @@ const InvoicesPage = async ({
       <div className='flex flex-col gap-4 p-4'>
         <SelectName query='name' />
         <div className='flex w-full gap-3 overflow-x-auto pb-2 -mx-4 px-4'>
-          <button className='flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
-            <Image
-              src='/icons/filter_list.svg'
-              alt='filter'
-              width={24}
-              height={24}
-              className='text-slate-500'
-            />
-            <span>Wszystkie statusy</span>
-          </button>
-          <button className='flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-200/50 dark:bg-white/10 px-4 text-sm font-medium leading-normal tracking-tight text-slate-600 dark:text-slate-300'>
-            <Image
-              src='/icons/calendar_today.svg'
-              alt='calendar'
-              width={24}
-              height={24}
-              className='text-slate-500'
-            />
-            <span>Okres</span>
-          </button>
+         <SortAll />
+          <SortInvoicesByDate />
           <SortInvoices />
         </div>
         <div className='flex flex-col gap-3'>

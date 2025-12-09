@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs"
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +28,18 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="pl">
+      <html lang="pl" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         <Toaster />
         <Footer />
       </body>

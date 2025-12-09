@@ -50,7 +50,7 @@ const Footer = () => {
           asChild
           className='h-12 bg-transparent hover:bg-primary/30 flex flex-col items-center gap-1 p-2 '
         >
-          <Link href='/analytics'>
+          <Link href='/analysis'>
             <Image
               src='/icons/bar_chart_FFF.svg'
               alt='Bar Chart'
