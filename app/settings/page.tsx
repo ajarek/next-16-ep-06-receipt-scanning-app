@@ -2,8 +2,11 @@ import Image from "next/image"
 import { SignOutButton } from '@clerk/nextjs'
 import { ModeToggle } from "@/components/ModeToggle"
 import Link from "next/link"
-
-const SettingsPage = () => {
+import { auth, currentUser } from '@clerk/nextjs/server'
+const SettingsPage = async () => {
+ 
+  const user = await currentUser()
+  
   return (
     <div className='relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-20'>
       <header className='sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm'>
@@ -27,7 +30,7 @@ const SettingsPage = () => {
             <div className='relative w-60 h-60 flex items-center justify-center'>
 
             <Image
-              src='/images/unnamed.png'
+              src= {user?.imageUrl || '/images/unnamed.png'}
               alt='User Avatar'
               width={124}
               height={124}
@@ -41,10 +44,10 @@ const SettingsPage = () => {
           </div>
           <div className='text-center'>
             <h2 className='text-xl font-bold text-zinc-900 dark:text-white'>
-              Jan Kowalski
+              {user?.firstName} {user?.lastName}
             </h2>
             <p className='text-sm text-zinc-500 dark:text-zinc-400'>
-              jan.kowalski@example.com
+              {user?.emailAddresses[0].emailAddress}
             </p>
           </div>
         </div>

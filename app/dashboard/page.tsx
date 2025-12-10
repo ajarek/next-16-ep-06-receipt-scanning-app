@@ -56,7 +56,8 @@ const Dashboard = async () => {
             <span className='truncate'>Dodaj nową fakturę</span>
             </Link>
           </Button>
-          <button className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
+          <Button asChild className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
+          <Link href='/ui/multi-modal-chat'>
             <Image
               src='/icons/download.svg'
               alt='Download'
@@ -64,7 +65,8 @@ const Dashboard = async () => {
               height={24}
             />
             <span className='truncate'>Pobierz z pliku</span>
-          </button>
+            </Link>
+          </Button>
         </div>
         {/* Charts */}
         <div className='flex w-full flex-col gap-4 rounded-lg bg-slate-200/50 p-4 dark:bg-white/10'>
