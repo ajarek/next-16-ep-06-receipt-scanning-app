@@ -6,7 +6,7 @@ import { DefaultChatTransport } from "ai"
 import Image from "next/image"
 
 export default function MultiModalChatPage() {
-  const [input, setInput] = useState("Utwórz obiekt javascript, klucze: seller, sellerAddress, nip, number, date, name, amount, ptu,  paymentDate i dopisz do nich wartości ")
+  const [input, setInput] = useState("")
   const [files, setFiles] = useState<FileList | undefined>(undefined)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -70,6 +70,25 @@ export default function MultiModalChatPage() {
                   )
                 }
                 return null
+              case "tool-invocation":
+                // @ts-expect-error handling potential type mismatch in AI SDK versions
+                const toolInvocation = part.toolInvocation || part
+                if (toolInvocation?.toolName === "create_invoice_data") {
+                  return (
+                    <div
+                      key={`${message.id}-${index}`}
+                      className='mt-4 p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700'
+                    >
+                      <h3 className='font-semibold mb-2 text-zinc-900 dark:text-zinc-100'>
+                        Dane faktury:
+                      </h3>
+                      <pre className='text-xs overflow-auto bg-white dark:bg-zinc-950 p-3 rounded border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 font-mono'>
+                        {JSON.stringify(toolInvocation.args, null, 2)}
+                      </pre>
+                    </div>
+                  )
+                }
+                return null
               default:
                 return null
             }
@@ -130,7 +149,6 @@ export default function MultiModalChatPage() {
               className=' flex-1 dark:bg-zinc-800 p-2 border border-zinc-300 dark:border-zinc-700 rounded shadow-xl text-wrap'
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              
             />
             {status === "submitted" || status === "streaming" ? (
               <button
