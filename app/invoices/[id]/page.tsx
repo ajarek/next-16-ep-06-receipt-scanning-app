@@ -18,7 +18,10 @@ const InvoicePage = async ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <div className='relative flex h-auto min-h-screen w-full flex-col mb-16 '>
       <div className='sticky top-0 z-10 flex items-center bg-background-light/80 p-4 pb-3 dark:bg-background-dark/80 backdrop-blur-sm'>
-        <Link href="/invoices" className='flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 w-12 bg-transparent text-slate-900 dark:text-white -ml-2'>
+        <Link
+          href='/invoices'
+          className='flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 w-12 bg-transparent text-slate-900 dark:text-white -ml-2'
+        >
           <Image
             src='/icons/arrow_back_ios_new.svg'
             alt='arrow_back_ios_new'
@@ -158,14 +161,29 @@ const InvoicePage = async ({ params }: { params: Promise<{ id: string }> }) => {
       <div className='sticky bottom-20 left-0 right-0 z-10 border-t border-slate-300/50 bg-background-light/80 p-4 dark:border-white/10 dark:bg-background-dark/80 backdrop-blur-sm'>
         <div className='mx-auto flex max-w-md items-center gap-3'>
           <Link
-            href={`/invoices/print?id=${invoice?.id}&seller=${invoice?.seller}&sellerAddress=${invoice?.sellerAddress}&sellerNip=${invoice?.nip}&number=${invoice?.number}&date=${invoice?.date.toISOString().split("T")[0]}&paymentDate=${invoice?.paymentDate.toISOString().split("T")[0]}&amount=${invoice?.amount.toFixed(2)}&ptu=${invoice?.ptu.toFixed(2)}&status=${invoice?.status}&name=${invoice?.name}&paymentMethod=${invoice?.paymentMethod}`}
+            href={`/invoices/print?id=${invoice?.id}&seller=${
+              invoice?.seller
+            }&sellerAddress=${invoice?.sellerAddress}&sellerNip=${
+              invoice?.nip
+            }&number=${invoice?.number}&date=${
+              invoice?.date.toISOString().split("T")[0]
+            }&paymentDate=${
+              invoice?.paymentDate.toISOString().split("T")[0]
+            }&amount=${invoice?.amount.toFixed(2)}&ptu=${invoice?.ptu.toFixed(
+              2
+            )}&status=${invoice?.status}&name=${invoice?.name}&paymentMethod=${
+              invoice?.paymentMethod
+            }`}
             className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-300/50 dark:bg-white/10 px-4 text-sm font-bold leading-normal tracking-tight text-slate-700 dark:text-slate-200'
           >
             <Image src='/icons/print.svg' alt='print' width={24} height={24} />
             <span>Drukuj</span>
           </Link>
           <PDFClient params={params} />
-          <Link href={`/invoices/edit?id=${invoice?.id}`} className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
+          <Link
+            href={`/invoices/edit?id=${invoice?.id}`}
+            className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'
+          >
             <Image src='/icons/edit.svg' alt='edit' width={24} height={24} />
             <span>Edytuj</span>
           </Link>

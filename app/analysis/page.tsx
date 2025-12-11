@@ -1,7 +1,6 @@
 import { ChartAreaInteractive } from "@/components/ChartArea"
 import { ChartPieDonutText } from "@/components/ChartPie"
 import Image from "next/image"
-import React from "react"
 
 const Analysis = () => {
   return (
@@ -153,7 +152,9 @@ const Analysis = () => {
               <p className='font-semibold text-zinc-900 dark:text-white'>
                 $45,230.00
               </p>
-              <p className='text-sm text-green-500 dark:text-green-400'>Zapłacona</p>
+              <p className='text-sm text-green-500 dark:text-green-400'>
+                Zapłacona
+              </p>
             </div>
           </div>
           <div className='flex items-center justify-between p-4 bg-white dark:bg-zinc-900/50 border-x border-zinc-200 dark:border-x-zinc-800/50'>
@@ -179,7 +180,9 @@ const Analysis = () => {
               <p className='font-semibold text-zinc-900 dark:text-white'>
                 $28,910.50
               </p>
-              <p className='text-sm text-green-500 dark:text-green-400'>Zapłacona</p>
+              <p className='text-sm text-green-500 dark:text-green-400'>
+                Zapłacona
+              </p>
             </div>
           </div>
           <div className='flex items-center justify-between p-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800/50 rounded-b-lg'>
@@ -194,7 +197,7 @@ const Analysis = () => {
               </div>
               <div>
                 <p className='font-semibold text-zinc-900 dark:text-white'>
-                 Sklep Lidl
+                  Sklep Lidl
                 </p>
                 <p className='text-sm text-zinc-500 dark:text-zinc-400'>
                   41 faktury

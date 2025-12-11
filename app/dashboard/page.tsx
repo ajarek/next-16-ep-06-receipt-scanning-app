@@ -1,12 +1,10 @@
 import Image from "next/image"
-
-
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { getInvoices } from "@/lib/actions/getInvoices"
 
 const Dashboard = async () => {
-  const invoices =await getInvoices()
+  const invoices = await getInvoices()
   return (
     <div className='relative flex h-auto min-h-screen w-full flex-col'>
       {/* Top App Bar */}
@@ -50,21 +48,27 @@ const Dashboard = async () => {
         </div>
         {/* Button Group */}
         <div className='flex w-full gap-3'>
-          <Button asChild className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-4 text-sm font-bold leading-normal tracking-tight text-background-dark'>
+          <Button
+            asChild
+            className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary px-4 text-sm font-bold leading-normal tracking-tight text-background-dark'
+          >
             <Link href='/add-invoice'>
-            <Image src='/icons/add.svg' alt='Add' width={24} height={24} />
-            <span className='truncate'>Dodaj nową fakturę</span>
+              <Image src='/icons/add.svg' alt='Add' width={24} height={24} />
+              <span className='truncate'>Dodaj nową fakturę</span>
             </Link>
           </Button>
-          <Button asChild className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'>
-          <Link href='/ui/multi-modal-chat'>
-            <Image
-              src='/icons/download.svg'
-              alt='Download'
-              width={24}
-              height={24}
-            />
-            <span className='truncate'>Pobierz z pliku</span>
+          <Button
+            asChild
+            className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-primary/20 px-4 text-sm font-bold leading-normal tracking-tight text-primary'
+          >
+            <Link href='/ui/multi-modal-chat'>
+              <Image
+                src='/icons/download.svg'
+                alt='Download'
+                width={24}
+                height={24}
+              />
+              <span className='truncate'>Pobierz z pliku</span>
             </Link>
           </Button>
         </div>
@@ -113,7 +117,7 @@ const Dashboard = async () => {
               )
               .slice(0, 3)
               .map((invoice) => (
-                <Link 
+                <Link
                   href={`/invoices/${invoice.id}`}
                   key={invoice.id}
                   className='flex items-center gap-4 rounded-lg bg-slate-200/50 p-3 dark:bg-white/10'

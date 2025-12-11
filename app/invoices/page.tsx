@@ -45,8 +45,8 @@ const InvoicesPage = async ({
       </div>
       <div className='flex flex-col gap-4 p-4'>
         <SelectName query='name' />
-        <div className='flex w-full gap-3 overflow-x-auto pb-2 -mx-4 px-4'>
-         <SortAll />
+        <div className='flex flex-wrap w-full gap-3 overflow-x-auto pb-2 -mx-4 px-4'>
+          <SortAll />
           <SortInvoicesByDate />
           <SortInvoices />
         </div>

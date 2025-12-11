@@ -1,9 +1,39 @@
 "use client"
 import { use, useRef } from "react"
 
-export default function PrintData({searchParams}: {searchParams: Promise<{id: number, seller: string, sellerAddress: string, sellerNip: string, number: string, date: string,name: string, paymentDate: string,amount: number,ptu: number,status: string,paymentMethod: string}>}) {
-    const {id, seller, sellerAddress, sellerNip, number, date, name, paymentDate, amount, ptu, status, paymentMethod} = use(searchParams)
-    
+export default function PrintData({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    id: number
+    seller: string
+    sellerAddress: string
+    sellerNip: string
+    number: string
+    date: string
+    name: string
+    paymentDate: string
+    amount: number
+    ptu: number
+    status: string
+    paymentMethod: string
+  }>
+}) {
+  const {
+    id,
+    seller,
+    sellerAddress,
+    sellerNip,
+    number,
+    date,
+    name,
+    paymentDate,
+    amount,
+    ptu,
+    status,
+    paymentMethod,
+  } = use(searchParams)
+
   const printRef = useRef<HTMLDivElement>(null)
 
   const handlePrint = () => {
@@ -19,7 +49,7 @@ export default function PrintData({searchParams}: {searchParams: Promise<{id: nu
   }
 
   return (
-    <div className="flex flex-col gap-4 mx-auto w-1/2 p-4 text-2xl">
+    <div className='flex flex-col gap-4 mx-auto w-1/2 p-4 text-2xl'>
       <div ref={printRef} id='print-area'>
         <h1>Sprzedawca: {seller}</h1>
         <p>Adres: {sellerAddress}</p>

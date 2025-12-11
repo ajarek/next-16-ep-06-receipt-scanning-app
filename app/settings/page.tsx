@@ -1,12 +1,11 @@
 import Image from "next/image"
-import { SignOutButton } from '@clerk/nextjs'
+import { SignOutButton } from "@clerk/nextjs"
 import { ModeToggle } from "@/components/ModeToggle"
 import Link from "next/link"
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { currentUser } from "@clerk/nextjs/server"
 const SettingsPage = async () => {
- 
   const user = await currentUser()
-  
+
   return (
     <div className='relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-20'>
       <header className='sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm'>
@@ -27,10 +26,9 @@ const SettingsPage = async () => {
       </header>
       <main className='flex flex-1 flex-col p-4'>
         <div className='flex flex-col items-center gap-4 py-6'>
-            <div className='relative w-60 h-60 flex items-center justify-center'>
-
+          <div className='relative w-60 h-60 flex items-center justify-center'>
             <Image
-              src= {user?.imageUrl || '/images/unnamed.png'}
+              src={user?.imageUrl || "/images/unnamed.png"}
               alt='User Avatar'
               width={124}
               height={124}
@@ -39,9 +37,8 @@ const SettingsPage = async () => {
             <button className='absolute bottom-0 right-1/2 translate-x-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-primary ring-4 ring-background-light dark:ring-background-dark'>
               <Image src='/icons/edit.svg' alt='Edit' width={24} height={24} />
             </button>
-            </div>
-          <div className='relative'>
           </div>
+          <div className='relative'></div>
           <div className='text-center'>
             <h2 className='text-xl font-bold text-zinc-900 dark:text-white'>
               {user?.firstName} {user?.lastName}
@@ -202,16 +199,15 @@ const SettingsPage = async () => {
           </div>
           <div className='pt-4'>
             <SignOutButton>
-            <button className='flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-200/80 dark:bg-zinc-800/50 py-3.5 font-bold text-red-500 dark:text-red-400 transition-colors hover:bg-zinc-200 dark:hover:bg-zinc-800 cursor-pointer'>
-              <Image
-                src='/icons/logout.svg'
-                alt='Logout'
-                width={24}
-                height={24}
-                
-              />
-              <span>Wyloguj się</span>
-            </button>
+              <button className='flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-200/80 dark:bg-zinc-800/50 py-3.5 font-bold text-red-500 dark:text-red-400 transition-colors hover:bg-zinc-200 dark:hover:bg-zinc-800 cursor-pointer'>
+                <Image
+                  src='/icons/logout.svg'
+                  alt='Logout'
+                  width={24}
+                  height={24}
+                />
+                <span>Wyloguj się</span>
+              </button>
             </SignOutButton>
           </div>
         </div>

@@ -74,16 +74,18 @@ export default function PDFClient({
 
   return (
     <div>
-       <button  className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-300/50 dark:bg-white/10 px-4 text-sm font-bold leading-normal tracking-tight text-slate-700 dark:text-slate-200'
-       onClick={generate}>
-            <Image
-              src='/icons/download.svg'
-              alt='download'
-              width={24}
-              height={24}
-            />
-            <span>Pobierz</span>
-          </button>
+      <button
+        className='flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full bg-slate-300/50 dark:bg-white/10 px-4 text-sm font-bold leading-normal tracking-tight text-slate-700 dark:text-slate-200'
+        onClick={generate}
+      >
+        <Image
+          src='/icons/download.svg'
+          alt='download'
+          width={24}
+          height={24}
+        />
+        <span>Pobierz</span>
+      </button>
     </div>
   )
 }
